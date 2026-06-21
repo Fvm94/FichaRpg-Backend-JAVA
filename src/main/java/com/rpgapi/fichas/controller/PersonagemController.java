@@ -1,6 +1,7 @@
 package com.rpgapi.fichas.controller;
 
 import com.rpgapi.fichas.dto.PersonagemRequestDTO;
+import com.rpgapi.fichas.dto.PersonagemResponseDTO;
 import com.rpgapi.fichas.model.Personagem;
 import com.rpgapi.fichas.service.PersonagemService;
 import jakarta.validation.Valid;
@@ -19,12 +20,13 @@ public class PersonagemController {
      }
 
      @PostMapping
-    public ResponseEntity<Personagem> criarPersonagem(@RequestBody @Valid PersonagemRequestDTO dto){
+    public ResponseEntity<PersonagemResponseDTO> criarPersonagem(@RequestBody @Valid PersonagemRequestDTO dto){
          Personagem novoPersonagem = new Personagem((dto.nome()), dto.classe(), dto.nivel());
-
          Personagem salvoPersonagem = service.salvar(novoPersonagem);
 
-         return ResponseEntity.status(HttpStatus.CREATED).body(salvoPersonagem);
+         PersonagemResponseDTO responseDTO = new PersonagemResponseDTO(salvoPersonagem, dto.atributos());
+
+         return ResponseEntity.status(HttpStatus.CREATED).body(responseDTO);
      }
 
      @GetMapping("/{id}")

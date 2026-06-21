@@ -3,6 +3,8 @@ package com.rpgapi.fichas.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
+import java.util.List;
+
 public record PersonagemRequestDTO(
         @NotBlank(message = "O nome não pode estar em branco")
         String nome,
@@ -13,5 +15,7 @@ public record PersonagemRequestDTO(
         String subclasse,
 
         @Positive(message = "O nível deve ser maior que zero")
-        Integer nivel
+        Integer nivel,
+
+        List<AtributoDTO> atributos
 ) {}

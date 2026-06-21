@@ -24,4 +24,6 @@ Este projeto foi construído com foco em boas práticas de arquitetura, utiliza�
 2. Certifique-se de ter o Java 17 (ou superior) e o Maven instalados.
 3. Navegue até a raiz do projeto e execute:
    ```bash
-   mvn spring-boot:run
+   mvnw spring-boot:run
+
+A API estará disponível em http://localhost:8080.
